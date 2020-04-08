@@ -53,6 +53,8 @@ class ViewController: UIViewController {
         }
     }
     
+    //은죵이 바보 똥깨 멍청이 뿡
+    
     @IBAction func btnLampRemove(_ sender: UIButton) {
         let lampRemoveAlert = UIAlertController(title: "램프 제거", message: "램프를 제거하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
         let offAction = UIAlertAction(title: "아니오, 끕니다(off).", style: UIAlertAction.Style.default, handler: {
