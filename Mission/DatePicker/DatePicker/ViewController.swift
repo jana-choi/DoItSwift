@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     let timeSelector: Selector = #selector(ViewController.updateTime)
     let interval = 1.0
     var alarmTime = ""
+    var alertFlag = false
     
     @IBOutlet var lblCurrentTime: UILabel!
     @IBOutlet var lblPickerTime: UILabel!
@@ -42,16 +43,29 @@ class ViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
         lblCurrentTime.text = "현재 시간: " + formatter.string(from: date as Date)
         
-        if(alarmTime == currentTime) {
-            if(view.backgroundColor == UIColor.red) {
-                view.backgroundColor = UIColor.blue
+//        if(alarmTime == currentTime) {
+//            if(view.backgroundColor == UIColor.red) {
+//                view.backgroundColor = UIColor.blue
+//            }
+//            else {
+//                view.backgroundColor = UIColor.red
+//            }
+//        }
+//        else {
+//            view.backgroundColor = UIColor.white
+//        }
+        
+        if (alarmTime == currentTime) {
+            if (alertFlag == false) {
+                let timeAlert = UIAlertController(title: "알림", message: "설정된 시간입니다 !!!", preferredStyle: UIAlertController.Style.alert)
+                let onAction = UIAlertAction(title: "네, 알겠습니다.", style: UIAlertAction.Style.default, handler: nil)
+                timeAlert.addAction(onAction)
+                present(timeAlert, animated: true, completion: nil)
             }
-            else {
-                view.backgroundColor = UIColor.red
-            }
+            alertFlag = true
         }
         else {
-            view.backgroundColor = UIColor.white
+            alertFlag = false
         }
     }
 }
